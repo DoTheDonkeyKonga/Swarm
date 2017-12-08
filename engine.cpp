@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "swarm.h"
 #include "engine.h"
 
 
@@ -8,22 +9,26 @@ Engine::Engine()
 {
     // Construct SFML window
     sf::VideoMode Desktop = sf::VideoMode::getDesktopMode();
-    this->WindowWidth = Desktop.width;
-    this->WindowHeight = Desktop.height;
-    this->Window.create(sf::VideoMode(WindowWidth, WindowHeight, Desktop.bitsPerPixel), "Swarm", sf::Style::Fullscreen);
+    WindowWidth = Desktop.width;
+    WindowHeight = Desktop.height;
+    Window.create(sf::VideoMode(WindowWidth, WindowHeight, Desktop.bitsPerPixel), "Swarm", sf::Style::Default);
+    Window.setFramerateLimit(60); // Optional
 }
 
 void Engine::run()
 {
+    // Initialise our Swarm of Boids
+    swarm.initialise();
+
     while (Window.isOpen())
     {
-            input();
-            //update();
-            //draw();
+            checkInput();
+            update();
+            render();
     }
 }
 
-void Engine::input()
+void Engine::checkInput()
 {
     sf::Event InputEvent;
     while (Window.pollEvent(InputEvent))
@@ -37,10 +42,16 @@ void Engine::input()
 
 void Engine::update()
 {
-    // ...
+    // Apply the flocking algorithm to our Swarm
+    swarm.applyBehaviour();
 }
 
-void Engine::draw()
+void Engine::render()
 {
-    // ...
+    Window.clear();
+    for (int i = 0; i < swarm.getMaxSize(); i++)
+    {
+        Window.draw(swarm[i].getShape());
+    }
+    Window.display();
 }

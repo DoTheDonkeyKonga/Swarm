@@ -11,12 +11,16 @@
 */
 
 
+// Forward declarations
+class Swarm;
+
 class Engine{
 
 public:
 
     Engine();
 	void run();
+	Swarm swarm(250);
 
 
 private:
@@ -30,9 +34,9 @@ private:
 	sf::Sprite BackgroundSprite;
 	sf::Texture BackgroundTexture;
 
-    void input();
+    void checkInput();
 	void update(float DTimeAsSeconds);
-	void draw();
+	void render();
 };
 
 #endif // ENGINE_H_DZG_INCLUDED

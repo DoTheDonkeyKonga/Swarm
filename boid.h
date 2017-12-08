@@ -33,8 +33,9 @@ private:
 	vec2f Velocity;
 	vec2f Acceleration;
 
+	float Size = 3.5f; // Sensible default for testing
 	float MaxSpeed;
-	float MaxForce
+	float MaxForce;
 
 	// If using SFML
 	sf::Sprite Sprite;
@@ -49,6 +50,7 @@ public:
 	vec2f getAcceleration() const;
 	float getMaxSpeed() const;
 	float getMaxForce() const;
+	sf::Shape getShape() const;
 	sf::Sprite getSprite() const;
 
 	/// Setters

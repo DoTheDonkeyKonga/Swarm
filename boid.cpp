@@ -4,21 +4,34 @@
 #include <SFML/Graphics.hpp>
 
 
-/// Constructors
-
 Boid::Boid()
 {
 	Position.x = 0; Position.y = 0;
+	shape.setPosition(Position.x, Position.y);
+	shape.setFillColor(sf::Color::Green);
+	shape.setOutlineColor(sf::Color::White);
+	shape.setOutlineThickness(1);
+	shape.setRadius(Size);
 }
 
 Boid::Boid(vec2f InitialPosition)
 {
 	Position.set(InitialPosition);
+    shape.setPosition(Position.x, Position.y);
+	shape.setFillColor(sf::Color::Green);
+	shape.setOutlineColor(sf::Color::White);
+	shape.setOutlineThickness(1);
+	shape.setRadius(Size);
 }
 
 Boid::Boid(float PositionX, PositionY)
 {
 	Position.set(PositionX, PositionY);
+    shape.setPosition(Position.x, Position.y);
+	shape.setFillColor(sf::Color::Green);
+	shape.setOutlineColor(sf::Color::White);
+	shape.setOutlineThickness(1);
+	shape.setRadius(Size);
 }
 
 
@@ -49,6 +62,11 @@ float Boid::getMaxForce() const
 	return MaxForce;
 }
 
+sf::Shape getShape() const
+{
+    return Shape;
+}
+
 sf::Sprite Boid::getSprite() const
 {
 	return &Sprite;
@@ -59,6 +77,7 @@ sf::Sprite Boid::getSprite() const
 void Boid::setPosition(vec2f NewPosition)
 {
 	Position.set(NewPosition);
+	shape.setPosition(NewPosition);
 }
 
 void Boid::setVelocity(vec2f NewVelocity)
