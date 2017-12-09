@@ -1,4 +1,3 @@
-#pragma once
 
 #include <SFML/Graphics.hpp>
 #include "swarm.h"
@@ -18,7 +17,7 @@ Engine::Engine()
 void Engine::run()
 {
     // Initialise our Swarm of Boids
-    swarm.initialise();
+    swarm.initialise(250, false);
 
     while (Window.isOpen())
     {
@@ -49,9 +48,9 @@ void Engine::update()
 void Engine::render()
 {
     Window.clear();
-    for (int i = 0; i < swarm.getMaxSize(); i++)
+    for (int i = 0; i < swarm.getMaxFlockSize(); i++)
     {
-        Window.draw(swarm[i].getShape());
+        Window.draw(swarm.flock[i].getShape());
     }
     Window.display();
 }

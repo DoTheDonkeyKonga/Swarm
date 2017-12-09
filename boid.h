@@ -3,6 +3,9 @@
 
 #pragma once
 
+#include <SFML/Graphics.hpp>
+#include "vec2f.h"
+
 
 /*
 	Writtten by DoTheDonkeyKonga @ I_M_Awesome Productions
@@ -17,43 +20,28 @@
 // Forward declarations
 class vec2f;
 class sf::Texture;
-class sf::Sprite
-class sf::CircleShape
+class sf::Sprite;
+class sf::CircleShape;
 
 
 class Boid {
 
-	// Default constructor
-	Boid();
-	Boid(vec2f InitialPosition, bool bIsPredator);
-	Boid(float PositionX, PositionY, bool bIsPredator);
-
-private:
-	vec2f Position;
-	vec2f Velocity;
-	vec2f Acceleration;
-
-	float Size = 3.5f; // Sensible default for testing
-	float MaxSpeed;
-	float MaxForce;
-
-	// If using SFML
-	sf::Sprite Sprite;
-	sf::CircleShape Shape;
-
 public:
+    	// Default constructor
+	Boid();
+	Boid(vec2f InitialPosition);
+	Boid(float PositionX, float PositionY);
+
 	bool bPredator;
 
-	/// Getters
 	vec2f getPosition() const;
 	vec2f getVelocity() const;
 	vec2f getAcceleration() const;
 	float getMaxSpeed() const;
 	float getMaxForce() const;
-	sf::Shape getShape() const;
-	sf::Sprite getSprite() const;
+	sf::Sprite getSprite();
+	sf::CircleShape getShape();
 
-	/// Setters
 	void setPosition(vec2f NewPosition);
 	void setVelocity(vec2f NewVelocity);
 	void setAcceleration(vec2f NewAcceleration);
@@ -66,6 +54,19 @@ public:
 
 	void update(float DeltaTime);
 
+private:
+
+	vec2f Position;
+	vec2f Velocity;
+	vec2f Acceleration;
+
+	float Size = 3.5f; // Sensible default for testing
+	float MaxSpeed;
+	float MaxForce;
+
+	// If using SFML
+	sf::Sprite Sprite;
+	sf::CircleShape Shape;
 };
 
 #endif // BOID_H_DZG_INCLUDED

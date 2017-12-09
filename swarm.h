@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "boid.h"
+
 
 /*
 	Written by DoTheDonkeyKonga @ I_M_Awesome Productions
@@ -20,18 +22,18 @@ class Swarm{
 public:
 
     // Constructor
-    Swarm(int MaxFlockSize);
+    Swarm();
 
     std::vector<Boid> flock;
 
     void initialise(int MaxFlockSize, bool bRandomPositions = false);
     void applyBehaviour();
-    void getMaxSize() const;
-    void setMaxSize(int NewMaxSize);
+    int getMaxFlockSize() const;
+    void setMaxFlockSize(int NewMaxSize);
 
 private:
 
-    int MaxSize;
+    int MaxFlockSize;
 
     /// The three main rules of our algorithm:
     // Rule 1: Cohesion: Boids try to fly towards the centre of mass of neighbouring boids
@@ -40,7 +42,6 @@ private:
     void separation(Boid &thisBoid);
     // Rule 3: Alignment: Boids try to match velocity with nearby boids
     void alignment(Boid &thisBoid);
-
 };
 
 

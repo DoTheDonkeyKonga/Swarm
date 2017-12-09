@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include "swarm.h"
 
 /*
 	Written by DoTheDonkeyKonga @ I_M_Awesome Productions
@@ -11,16 +12,13 @@
 */
 
 
-// Forward declarations
-class Swarm;
-
 class Engine{
 
 public:
 
     Engine();
 	void run();
-	Swarm swarm(250);
+	Swarm swarm;
 
 
 private:
@@ -31,11 +29,11 @@ private:
 	int WindowHeight;
 
 	// declare a Sprite and Texture for the background
-	sf::Sprite BackgroundSprite;
+	sf::Sprite BackgroundSprite;    // TODO add this to Engine's constructor when finished testing
 	sf::Texture BackgroundTexture;
 
     void checkInput();
-	void update(float DTimeAsSeconds);
+	void update();
 	void render();
 };
 

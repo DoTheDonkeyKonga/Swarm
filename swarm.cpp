@@ -1,19 +1,19 @@
-#pragma once
 
 #include "swarm.h"
 #include "boid.h"
 #include "vec2f.h"
 
 
-Swarm::Swarm(int MaxFlockSize)
+Swarm::Swarm()
 {
-    MaxSize = MaxFlockSize;
+    // ...
 }
 
-Swarm::initialise(int MaxFlockSize, bool bRandomPositions = false)
+void Swarm::initialise(int MaxFlockSize, bool bRandomPositions)
 {
+    this->MaxFlockSize = MaxFlockSize;
     Boid b;
-    for (int i = 0; i < MaxSize; i++)
+    for (int i = 0; i < MaxFlockSize; i++)
     {
         flock.push_back (b);
     }
@@ -21,7 +21,7 @@ Swarm::initialise(int MaxFlockSize, bool bRandomPositions = false)
 
 void Swarm::applyBehaviour()
 {
-    for (int i = 0; i < MaxSize; i++)
+    for (int i = 0; i < MaxFlockSize; i++)
     {
         cohesion(flock[i]);
         separation(flock[i]);
@@ -29,30 +29,30 @@ void Swarm::applyBehaviour()
     }
 }
 
-void Swarm::getMaxSize() const
+int Swarm::getMaxFlockSize() const
 {
-    return MaxSize;
+    return MaxFlockSize;
 }
 
-void Swarm::setMaxSize(int NewMaxSize)
+void Swarm::setMaxFlockSize(int NewMaxSize)
 {
-    MaxSize = NewMaxSize;
+    MaxFlockSize = NewMaxSize;
 }
 
 void Swarm::cohesion(Boid &thisBoid)
 {
+    vec2f thisBoidPosition = thisBoid.getPosition();
     vec2f offset(0);
-    // For all other Boids in the flock
-    for (auto b : flock)
+    for (auto Boid &b : flock)
     {
-        if (b != thisBoid)
+        if (b != thisBoid) // TODO write overloaded comparison operators for Boid class
         {
-            offset = offset.add(b.getPosition());
+            offset.add(b.getPosition());
         }
     }
-    offset.subtract(thisBoid.Position);
+    offset.subtract(thisBoidPosition);
     offset.scalarDivide(100);
-    thisBoid.setPosition(thisBoid.getPosition().add(offset));
+    thisBoid.setPosition(thisBoidPosition.add(offset));
 }
 
 void Swarm::separation(Boid &thisBoid)

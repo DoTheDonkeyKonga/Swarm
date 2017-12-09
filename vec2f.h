@@ -31,11 +31,11 @@ public:
 	vec2f();
 	vec2f(float x, float y);
 	vec2f(float xyVal);
-	vec2f(vec2f &vec);
+	vec2f(const vec2f &vec);
+
 
 
 	/// MEMBER FUNCTIONS
-
 
 	float getMagnitude() const;
 	double getDirectionDegrees() const;
@@ -58,12 +58,12 @@ public:
 	// Methods to conveniently set the vector's X and Y values
 	void set(float x, float y);
 	void set(float xyVal);
-	void set(vec2f vec);
+	void set(const vec2f vec);
 	void zero();
 
 
-	/// OPERATORS AND ARITHMETIC FUNCTIONS
 
+	/// OPERATORS AND ARITHMETIC FUNCTIONS
 
 	// Vector arithmetic functions
 	vec2f add(vec2f vec);
@@ -91,8 +91,8 @@ public:
 	vec2f operator!=(const vec2f &vec);
 
 
-	/// STATIC FUNCTIONS
 
+	/// STATIC FUNCTIONS
 
 	static float getMagnitude(const vec2f &vec);
 	static double getDirectionDegrees(const vec2f &vec);
@@ -110,6 +110,7 @@ public:
 	static void clampLength(vec2f &vec, float maxLength);
 	static void normalise(vec2f &vec);
 	static double RadsToDegs(double radians);
+
 
 
 	/// HELPER FUNCTIONS

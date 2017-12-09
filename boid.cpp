@@ -1,41 +1,38 @@
-#pragma once
 
-#include "Vec2f.h"
+#include "boid.h"
+#include "vec2f.h"
 #include <SFML/Graphics.hpp>
 
 
 Boid::Boid()
 {
 	Position.x = 0; Position.y = 0;
-	shape.setPosition(Position.x, Position.y);
-	shape.setFillColor(sf::Color::Green);
-	shape.setOutlineColor(sf::Color::White);
-	shape.setOutlineThickness(1);
-	shape.setRadius(Size);
+	Shape.setPosition(Position.x, Position.y);
+	Shape.setFillColor(sf::Color::Green);
+	Shape.setOutlineColor(sf::Color::White);
+	Shape.setOutlineThickness(1);
+	Shape.setRadius(Size);
 }
 
 Boid::Boid(vec2f InitialPosition)
 {
 	Position.set(InitialPosition);
-    shape.setPosition(Position.x, Position.y);
-	shape.setFillColor(sf::Color::Green);
-	shape.setOutlineColor(sf::Color::White);
-	shape.setOutlineThickness(1);
-	shape.setRadius(Size);
+    Shape.setPosition(Position.x, Position.y);
+	Shape.setFillColor(sf::Color::Green);
+	Shape.setOutlineColor(sf::Color::White);
+	Shape.setOutlineThickness(1);
+	Shape.setRadius(Size);
 }
 
-Boid::Boid(float PositionX, PositionY)
+Boid::Boid(float PositionX, float PositionY)
 {
 	Position.set(PositionX, PositionY);
-    shape.setPosition(Position.x, Position.y);
-	shape.setFillColor(sf::Color::Green);
-	shape.setOutlineColor(sf::Color::White);
-	shape.setOutlineThickness(1);
-	shape.setRadius(Size);
+    Shape.setPosition(Position.x, Position.y);
+	Shape.setFillColor(sf::Color::Green);
+	Shape.setOutlineColor(sf::Color::White);
+	Shape.setOutlineThickness(1);
+	Shape.setRadius(Size);
 }
-
-
-/// Getters
 
 vec2f Boid::getPosition() const
 {
@@ -62,22 +59,20 @@ float Boid::getMaxForce() const
 	return MaxForce;
 }
 
-sf::Shape getShape() const
+sf::CircleShape Boid::getShape()
 {
     return Shape;
 }
 
-sf::Sprite Boid::getSprite() const
+sf::Sprite Boid::getSprite()
 {
-	return &Sprite;
+	return Sprite;
 }
 
-
-/// Setters
 void Boid::setPosition(vec2f NewPosition)
 {
 	Position.set(NewPosition);
-	shape.setPosition(NewPosition);
+	Shape.setPosition(NewPosition.x, NewPosition.y);
 }
 
 void Boid::setVelocity(vec2f NewVelocity)
