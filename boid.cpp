@@ -4,9 +4,10 @@
 #include <SFML/Graphics.hpp>
 
 
+// Default constructor: places the Boid at location (0, 0)
 Boid::Boid()
 {
-	Position.x = 0; Position.y = 0;
+    Position.set(0.f, 0.f);
 	Shape.setPosition(Position.x, Position.y);
 	Shape.setFillColor(sf::Color::Green);
 	Shape.setOutlineColor(sf::Color::White);

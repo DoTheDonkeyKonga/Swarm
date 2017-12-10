@@ -29,6 +29,11 @@ void Swarm::applyBehaviour()
     }
 }
 
+int Swarm::getCurrentFlockSize() const
+{
+    return flock.size();
+}
+
 int Swarm::getMaxFlockSize() const
 {
     return MaxFlockSize;
@@ -45,7 +50,7 @@ void Swarm::cohesion(Boid &thisBoid)
     vec2f offset(0);
     for (auto Boid &b : flock)
     {
-        if (b != thisBoid) // TODO write overloaded comparison operators for Boid class
+        if (b != thisBoid) // TODO overload comparison operators for Boid class
         {
             offset.add(b.getPosition());
         }

@@ -5,10 +5,6 @@
 
 
 /*
-	Written by DoTheDonkeyKonga @ I_M_Awesome Productions
-	IMAProductions@cyber-wizard.com
-	05.12.2017, ver.1.0
-
 	A class to define a mathematical vector with two coordinates (x and y).
 	It can be used to represent anything with two dimensions (e.g. a point or a velocity etc.).
 	All members are public and can be accessed directly without the need for accessors or mutators etc.
@@ -16,23 +12,27 @@
 	Most functions also have static versions.
 	Certain operators are overloaded for simple arithmetic and comparison operations but explicit arithmetic
 	functions are also included for convenience/preference.
+
+    Written by DoTheDonkeyKonga @ I_M_Awesome Productions
+	IMAProductions@cyber-wizard.com
+	05.12.2017, ver: 1.0
 */
 
 
-/// A class to define a mathematical vector with two coordinates(x and y)
 class vec2f {
 
 public:
-
-	float x;
-	float y;
-
 	// Default constructor: initialises all values to zero
 	vec2f();
-	vec2f(float x, float y);
+	// Conversion constructors
+	vec2f(float xVal, float yVal);
 	vec2f(float xyVal);
+	// Copy constructor
 	vec2f(const vec2f &vec);
 
+
+    float x;
+	float y;
 
 
 	/// MEMBER FUNCTIONS
@@ -60,7 +60,6 @@ public:
 	void set(float xyVal);
 	void set(const vec2f vec);
 	void zero();
-
 
 
 	/// OPERATORS AND ARITHMETIC FUNCTIONS
@@ -91,7 +90,6 @@ public:
 	vec2f operator!=(const vec2f &vec);
 
 
-
 	/// STATIC FUNCTIONS
 
 	static float getMagnitude(const vec2f &vec);
@@ -110,7 +108,6 @@ public:
 	static void clampLength(vec2f &vec, float maxLength);
 	static void normalise(vec2f &vec);
 	static double RadsToDegs(double radians);
-
 
 
 	/// HELPER FUNCTIONS

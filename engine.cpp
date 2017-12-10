@@ -34,7 +34,7 @@ void Engine::checkInput()
     {
         if (InputEvent.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
         {
-            Window.close();
+            Window.close(); // TODO implement checks for more input events once we're done testing
         }
     }
 }

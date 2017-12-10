@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <string>
 #include <math.h>
-#include "vec2.h"
+#include "vec2f.h"
 
 
 const double PI = 3.141592653589793238;
@@ -11,14 +11,13 @@ const double PI = 3.141592653589793238;
 
 
 // Default constructor: initialises all values to zero
-vec2f::vec2f() { x = .0f; y = .0f; }
-// Overloaded constructor: specify values for x and y
-vec2f::vec2f(float x, float y) { this->x = x; this->y = y; }
-// Overloaded constructor: specify one value for both x and y
-vec2f::vec2f(float xyVal) { x = xyVal; y = xyVal; }
-// Overloaded constructor: initialise values from another vec2f
-vec2f::vec2f(const vec2f &vec) { x = vec.x; y = vec.y; }
-
+vec2f::vec2f() : x(.0f), y(0.f) { }
+// Conversion constructor: specify values for x and y
+vec2f::vec2f(float xVal, float yVal) : x(xVal), y(yVal) { }
+// Conversion constructor: specify one value for both x and y
+vec2f::vec2f(float xyVal) : x(xyVal), y(xyVal) { }
+// Copy constructor: initialise values from another vec2f
+vec2f::vec2f(const vec2f &vec) : x(vec.x), y(vec.y) { }
 
 
 /// MEMBER FUNCTIONS
@@ -153,7 +152,6 @@ void vec2f::zero()
 }
 
 
-
 /// OPERATORS AND ARITHMETIC FUNCTIONS
 
 // Vector arithmetic functions
@@ -195,7 +193,6 @@ vec2f vec2f::operator/=(const vec2f &vec) { x /= vec.x, y /= vec.y; return *this
 // Comparison operators
 vec2f vec2f::operator==(const vec2f & vec) { return x == vec.x && y == vec.y; }
 vec2f vec2f::operator!=(const vec2f & vec) { return x != vec.x || y != vec.y; }
-
 
 
 /// STATIC FUNCTIONS
@@ -301,7 +298,6 @@ double vec2f::RadsToDegs(double radians)
 {
 	return radians*(180 / PI);
 }
-
 
 
 /// HELPER FUNCTIONS

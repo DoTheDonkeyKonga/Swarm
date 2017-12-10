@@ -8,29 +8,24 @@
 
 
 /*
+	A class to describe a "Bird-oid" type object capable of
+	exhibiting flocking behaviour.
+
 	Writtten by DoTheDonkeyKonga @ I_M_Awesome Productions
 	IMAProductions@cyber-wizard.com
-	05.12.2017, ver.1.0
-
-	A class to describe a "Bird-oid" type object that exhibits flocking
-	behaviour.
+	05.12.2017, ver: 1.0
 */
-
-
-// Forward declarations
-class vec2f;
-class sf::Texture;
-class sf::Sprite;
-class sf::CircleShape;
 
 
 class Boid {
 
 public:
-    	// Default constructor
+    // Default constructor: places the Boid at location (0, 0)
 	Boid();
+	// Conversion constructors
 	Boid(vec2f InitialPosition);
 	Boid(float PositionX, float PositionY);
+
 
 	bool bPredator;
 
@@ -64,7 +59,6 @@ private:
 	float MaxSpeed;
 	float MaxForce;
 
-	// If using SFML
 	sf::Sprite Sprite;
 	sf::CircleShape Shape;
 };
