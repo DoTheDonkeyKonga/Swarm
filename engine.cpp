@@ -11,13 +11,13 @@ Engine::Engine()
     WindowWidth = Desktop.width;
     WindowHeight = Desktop.height;
     Window.create(sf::VideoMode(WindowWidth, WindowHeight, Desktop.bitsPerPixel), "Swarm", sf::Style::Default);
-    Window.setFramerateLimit(60); // Optional
+    Window.setFramerateLimit(30); // Optional
 }
 
 void Engine::run()
 {
     // Initialise our Swarm of Boids
-    swarm.initialise(250, false);
+    swarm.initialise(15, false);
 
     while (Window.isOpen())
     {

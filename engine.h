@@ -24,8 +24,9 @@ public:
     // Default constructor
     Engine();
 
+    Swarm swarm;
+
 	void run();
-	Swarm swarm;
 
 private:
 

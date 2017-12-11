@@ -155,28 +155,28 @@ void vec2f::zero()
 /// OPERATORS AND ARITHMETIC FUNCTIONS
 
 // Vector arithmetic functions
-vec2f vec2f::add(vec2f vec) { return x + vec.x, y + vec.y; }
-vec2f vec2f::subtract(vec2f vec) { return x - vec.x, y - vec.y; }
-vec2f vec2f::multiply(vec2f vec) { return x * vec.x, y * vec.y; }
-vec2f vec2f::divide(vec2f vec)
+void vec2f::add(const vec2f &vec) { x += vec.x, y += vec.y; }
+void vec2f::subtract(const vec2f &vec) { x -= vec.x, y -= vec.y; }
+void vec2f::multiply(const vec2f &vec) { x *= vec.x, y *= vec.y; }
+void vec2f::divide(const vec2f &vec)
 {
 	if (vec.x == 0 || vec.y == 0)
 	{
 		throw std::invalid_argument("Division by zero not allowed!");
 	}
-	return x / vec.x, y / vec.y;
+	x /= vec.x, y /= vec.y;
 }
 // Scalar arithmetic functions
-vec2f vec2f::scalarAdd(float s) { return vec2f(x + s, y + s); }
-vec2f vec2f::scalarSubtract(float s) { return vec2f(x - s, y - s); }
-vec2f vec2f::scalarMultiply(float s) { return vec2f(x * s, y * s); }
-vec2f vec2f::scalarDivide(float s)
+void vec2f::scalarAdd(const float &s) { x += s, y += s; }
+void vec2f::scalarSubtract(const float &s) { x -= s, y -= s; }
+void vec2f::scalarMultiply(const float &s) { x *= s, y *= s; }
+void vec2f::scalarDivide(const float &s)
 {
 	if (s == 0)
-	{
+    {
 		throw std::invalid_argument("Division by zero not allowed!");
 	}
-	return vec2f(x / s, y / s);
+	x /= s, y /= s;
 }
 
 

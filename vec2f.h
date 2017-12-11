@@ -65,15 +65,15 @@ public:
 	/// OPERATORS AND ARITHMETIC FUNCTIONS
 
 	// Vector arithmetic functions
-	vec2f add(vec2f vec);
-	vec2f subtract(vec2f vec);
-	vec2f multiply(vec2f vec);
-	vec2f divide(vec2f vec);
+	void add(const vec2f &vec);
+	void subtract(const vec2f &vec);
+	void multiply(const vec2f &vec);
+	void divide(const vec2f &vec);
 	// Scaler arithmetic functions
-	vec2f scalarAdd(float s);
-	vec2f scalarSubtract(float s);
-	vec2f scalarMultiply(float s);
-	vec2f scalarDivide(float s);
+	void scalarAdd(const float &s);
+	void scalarSubtract(const float &s);
+	void scalarMultiply(const float &s);
+	void scalarDivide(const float &s);
 
 	// Overloaded operators
 	vec2f operator+(const vec2f &vec) const;

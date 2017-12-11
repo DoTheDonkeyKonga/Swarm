@@ -34,14 +34,19 @@ public:
 	vec2f getAcceleration() const;
 	float getMaxSpeed() const;
 	float getMaxForce() const;
+	int getIdNumber() const;
 	sf::Sprite getSprite();
 	sf::CircleShape getShape();
 
 	void setPosition(vec2f NewPosition);
+	void setPosition(float NewX, float NewY);
 	void setVelocity(vec2f NewVelocity);
+	void setVelocity(float NewX, float NewY);
 	void setAcceleration(vec2f NewAcceleration);
+	void setAcceleration(float NewX, float NewY);
 	void setMaxSpeed(float NewMaxSpeed);
 	void setMaxForce(float NewMaxForce);
+	void setIdNumber(int NewId);
 	void setSpriteTexture(sf::Texture& SpriteTexture);
 	void setSpritePosition(vec2f NewPosition);
 
@@ -55,9 +60,11 @@ private:
 	vec2f Velocity;
 	vec2f Acceleration;
 
-	float Size = 3.5f; // Sensible default for testing
+	float Size = 5.0f; // Sensible default for testing
 	float MaxSpeed;
 	float MaxForce;
+
+	int idNum;
 
 	sf::Sprite Sprite;
 	sf::CircleShape Shape;
