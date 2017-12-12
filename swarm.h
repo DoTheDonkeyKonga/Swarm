@@ -40,11 +40,11 @@ private:
 
     /// The three main rules of our algorithm:
     // Rule 1: Cohesion: Boids try to fly towards the centre of mass of neighbouring boids
-    void cohesion(Boid &thisBoid);
+    vec2f cohesion(Boid &thisBoid);
     // Rule 2: Separation: Boids try to keep a small distance away from other objects (including other boids)
-    void separation(Boid &thisBoid);
+    vec2f separation(Boid &thisBoid);
     // Rule 3: Alignment: Boids try to match velocity with nearby boids
-    void alignment(Boid &thisBoid);
+    vec2f alignment(Boid &thisBoid);
 };
 
 

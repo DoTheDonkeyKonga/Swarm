@@ -54,3 +54,13 @@ void Engine::render()
     }
     Window.display();
 }
+
+int Engine::getWindowWidth()
+{
+    return WindowWidth;
+}
+
+int Engine::getWindowHeight()
+{
+    return WindowHeight;
+}

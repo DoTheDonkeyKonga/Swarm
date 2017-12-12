@@ -28,6 +28,9 @@ public:
 
 	void run();
 
+	int getWindowWidth();
+	int getWindowHeight();
+
 private:
 
 	sf::RenderWindow Window;

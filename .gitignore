@@ -26,3 +26,8 @@
 *.exe
 *.out
 *.app
+
+#Code::Blocks files
+*.depend
+*.layout
+bin/Debug/Swarm
