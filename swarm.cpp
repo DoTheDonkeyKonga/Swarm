@@ -23,20 +23,18 @@ void Swarm::initialise(int MaxFlockSize, bool bRandomPositions)
 
 void Swarm::applyBehaviour()
 {
-    int i = 0;
     vec2f rule1(0), rule2(0), rule3(0);
     for (auto &b : flock)
     {
-        rule1 = cohesion(flock[i]);
-        rule2 = separation(flock[i]);
-        rule3 = alignment(flock[i]);
+        rule1 = cohesion(b);
+        rule2 = separation(b);
+        rule3 = alignment(b);
 
         vec2f bVelocity = b.getVelocity();
         vec2f bPosition = b.getPosition();
         bVelocity.add(rule1); bVelocity.add(rule2); bVelocity.add(rule3);
         bPosition.add(bVelocity);
         b.setPosition(bPosition);
-        i++;
     }
 }
 
@@ -55,7 +53,7 @@ void Swarm::setMaxFlockSize(int NewMaxSize)
     MaxFlockSize = NewMaxSize;
 }
 
-/// Rule 1: Cohesion: Boids try to fly towards the centre of mass of neighbouring boids
+/// Rule 1: Cohesion: Boids try to fly towards the centre of mass of neighbouring Boids
 vec2f Swarm::cohesion(Boid &thisBoid)
 {
     vec2f thisBoidPosition = thisBoid.getPosition();
@@ -72,7 +70,7 @@ vec2f Swarm::cohesion(Boid &thisBoid)
     return offset;
 }
 
-/// Rule 2: Separation: Boids try to keep a small distance away from other objects (including other boids)
+/// Rule 2: Separation: Boids try to keep a small distance away from other objects (including other Boids)
 vec2f Swarm::separation(Boid &thisBoid)
 {
     const float DesiredSeparation = 100.0f;
