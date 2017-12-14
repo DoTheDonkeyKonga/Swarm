@@ -21,6 +21,11 @@ void Swarm::initialise(int MaxFlockSize, bool bRandomPositions)
     }
 }
 
+void Swarm::randomisePositions() // TODO
+{
+    // ...
+}
+
 void Swarm::applyBehaviour()
 {
     vec2f rule1(0), rule2(0), rule3(0);
@@ -36,6 +41,11 @@ void Swarm::applyBehaviour()
         bPosition.add(bVelocity);
         b.setPosition(bPosition);
     }
+}
+
+void Swarm::checkBounds() // TODO
+{
+    // ...
 }
 
 int Swarm::getCurrentFlockSize() const
@@ -95,6 +105,17 @@ vec2f Swarm::separation(Boid &thisBoid)
 
 vec2f Swarm::alignment(Boid &thisBoid)
 {
-    // ...
-    return vec2f(0);
+    int FlockSize = getCurrentFlockSize();
+    vec2f perceivedAverageVel(0);
+    for (auto &b : flock)
+    {
+        if (b.getIdNumber() != thisBoid.getIdNumber())
+        {
+            perceivedAverageVel.add(b.getVelocity());
+        }
+    }
+    perceivedAverageVel.scalarDivide(float(FlockSize - 1));
+    perceivedAverageVel.subtract(thisBoid.getVelocity());
+    perceivedAverageVel.scalarDivide(8.0f);
+    return perceivedAverageVel;
 }

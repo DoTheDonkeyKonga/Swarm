@@ -27,7 +27,9 @@ public:
     std::vector<Boid> flock;
 
     void initialise(int MaxFlockSize, bool bRandomPositions = false);
+    void randomisePositions();
     void applyBehaviour();
+    void checkBounds();
 
     int getCurrentFlockSize() const;
     int getMaxFlockSize() const;
